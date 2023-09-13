@@ -1,0 +1,1 @@
+"./keypad_functions.obj" "./keypad_init.obj" "./main.obj" "./sysinit.obj" "../cc26x2r1f.cmd" -llibc.a 

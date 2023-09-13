@@ -1,0 +1,181 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.5                     
+******************************************************************************
+>> Linked Thu Oct 13 23:08:32 2022
+
+OUTPUT FILE NAME:   <hw2.out>
+ENTRY POINT SYMBOL: "ResetISR"  address: 00000329
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00058000  00000518  00057ae8  R  X
+  GPRAM                 11000000   00002000  00000000  00002000  RW X
+  SRAM                  20000000   00014000  0000043c  00013bc4  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000004e0   000004e0    r-x
+  00000000    00000000    000004e0   000004e0    r-x .text
+000004e0    000004e0    00000008   00000008    rw-
+  000004e0    000004e0    00000008   00000008    rw- .args
+000004e8    000004e8    00000030   00000030    r--
+  000004e8    000004e8    00000030   00000030    r-- .cinit
+20000000    20000000    0000033c   00000000    rw-
+  20000000    20000000    0000033c   00000000    rw- .data
+20013f00    20013f00    00000100   00000000    rw-
+  20013f00    20013f00    00000100   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.text      0    00000000    000004e0     
+                  00000000    0000028c     keypad_functions.obj (.text)
+                  0000028c    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00000328    00000088     main.obj (.text)
+                  000003b0    00000078     keypad_init.obj (.text)
+                  00000428    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00000490    00000042     sysinit.obj (.text)
+                  000004d2    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+
+.binit     0    00000000    00000000     
+
+.cinit     0    000004e8    00000030     
+                  000004e8    0000001f     (.cinit..data.load) [load image, compression = lzss]
+                  00000507    00000001     --HOLE-- [fill = 0]
+                  00000508    00000008     (__TI_handler_table)
+                  00000510    00000008     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.data      0    20000000    0000033c     UNINITIALIZED
+                  20000000    000002d8     main.obj (.data)
+                  200002d8    00000064     keypad_functions.obj (.data)
+
+.stack     0    20013f00    00000100     UNINITIALIZED
+                  20013f00    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20013f04    000000fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+.args      0    000004e0    00000008     
+                  000004e0    00000008     --HOLE-- [fill = 0]
+
+MODULE SUMMARY
+
+       Module                       code   ro data   rw data
+       ------                       ----   -------   -------
+    .\
+       main.obj                     136    0         728    
+       keypad_functions.obj         652    0         100    
+       keypad_init.obj              120    0         0      
+       sysinit.obj                  66     0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       974    0         828    
+                                                            
+    C:\ti\ccs1100\ccs\tools\compiler\ti-cgt-arm_20.2.5.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.asm.obj            156    0         0      
+       copy_decompress_lzss.c.obj   104    0         0      
+       copy_decompress_none.c.obj   14     0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       274    0         0      
+                                                            
+       Stack:                       0      0         256    
+       Linker Generated:            0      47        0      
+    +--+----------------------------+------+---------+---------+
+       Grand Total:                 1248   47        1084   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00000510 records: 1, size/record: 8, table size: 8
+	.data: load addr=000004e8, load size=0000001f bytes, run addr=20000000, run size=0000033c bytes, compression=lzss
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00000508 records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                    
+-------   ----                    
+00000001  InitKeypad              
+000003ef  InitPorts               
+000003b1  InitTimer               
+00000329  ResetISR                
+00000061  ScanDebounce            
+00000491  SystemInitialization    
+20014000  __STACK_END             
+00000100  __STACK_SIZE            
+20014000  __STACK_TOP             
+00000510  __TI_CINIT_Base         
+00000518  __TI_CINIT_Limit        
+00000508  __TI_Handler_Table_Base 
+00000510  __TI_Handler_Table_Limit
+00000429  __TI_decompress_lzss    
+000004d3  __TI_decompress_none    
+ffffffff  __TI_pprof_out_hndl     
+ffffffff  __TI_prof_data_size     
+ffffffff  __TI_prof_data_start    
+00000000  __TI_static_base__      
+0000028d  __aeabi_memcpy          
+0000028d  __aeabi_memcpy4         
+0000028d  __aeabi_memcpy8         
+ffffffff  __binit__               
+000004e0  __c_args__              
+20013f00  __stack                 
+20000000  __start___llvm_prf_cnts 
+20000000  __stop___llvm_prf_cnts  
+ffffffff  binit                   
+0000028d  memcpy                  
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                    
+-------   ----                    
+00000000  __TI_static_base__      
+00000001  InitKeypad              
+00000061  ScanDebounce            
+00000100  __STACK_SIZE            
+0000028d  __aeabi_memcpy          
+0000028d  __aeabi_memcpy4         
+0000028d  __aeabi_memcpy8         
+0000028d  memcpy                  
+00000329  ResetISR                
+000003b1  InitTimer               
+000003ef  InitPorts               
+00000429  __TI_decompress_lzss    
+00000491  SystemInitialization    
+000004d3  __TI_decompress_none    
+000004e0  __c_args__              
+00000508  __TI_Handler_Table_Base 
+00000510  __TI_CINIT_Base         
+00000510  __TI_Handler_Table_Limit
+00000518  __TI_CINIT_Limit        
+20000000  __start___llvm_prf_cnts 
+20000000  __stop___llvm_prf_cnts  
+20013f00  __stack                 
+20014000  __STACK_END             
+20014000  __STACK_TOP             
+ffffffff  __TI_pprof_out_hndl     
+ffffffff  __TI_prof_data_size     
+ffffffff  __TI_prof_data_start    
+ffffffff  __binit__               
+ffffffff  binit                   
+
+[29 symbols]

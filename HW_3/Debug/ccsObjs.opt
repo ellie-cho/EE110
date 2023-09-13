@@ -1,0 +1,1 @@
+"./lcd_functions.obj" "./lcd_init.obj" "./main.obj" "../cc26x2r1f.cmd" -llibc.a 
